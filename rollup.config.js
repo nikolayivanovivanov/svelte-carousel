@@ -12,10 +12,15 @@ import { mdsvex } from 'mdsvex'
 
 const production = !process.env.ROLLUP_WATCH
 
+// const docsConfig = {
+//   input: 'src/docs/main.js',
+//   outputFormat: 'iife',
+//   outputFile: 'docs/index.js',
+//}
 const docsConfig = {
-  input: 'src/docs/main.js',
+  input: 'src/docs/web-components.js',
   outputFormat: 'iife',
-  outputFile: 'docs/index.js',
+  outputFile: 'docs/web-components.js',
 }
 
 const getConfig = () => docsConfig
@@ -46,26 +51,37 @@ function serve() {
 }
 
 export default {
-  input: getConfig().input,
+  //input: getConfig().input,
+  input: './src/docs/web-components.js',
+  // output: {
+  //   sourcemap: true,
+  //   format: getConfig().outputFormat,
+  //   name: 'app',
+  //   file: getConfig().outputFile,
+  // },
   output: {
-    sourcemap: false,
-    format: getConfig().outputFormat,
-    name: 'app',
-    file: getConfig().outputFile,
+    // sourcemap: !production,
+    sourcemap: true,
+    format: 'iife',
+    name: 'carousel',
+    // We output it to public. This way, our svelte kit
+    // app will also host the web components.
+    file: 'docs/web-components.js',
   },
   plugins: [
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production,
+        // customElement: true,
       },
       // tell svelte to handle mdsvex files
-      extensions: ['.svelte', '.svx'],
-      preprocess: mdsvex({
-        layout: {
-          _: join(__dirname, './src/docs/Layouts/Main.svelte'),
-        },
-      }),
+      //extensions: ['.svelte', '.svx'],
+      //preprocess: mdsvex({
+      //  layout: {
+      //    _: join(__dirname, './src/docs/Layouts/Main.svelte'),
+      //  },
+      //}),
     }),
     // we'll extract any component CSS out into
     // a separate file - better for performance

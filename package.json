@@ -24,6 +24,10 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
     "start": "sirv docs",
     "storybook": "start-storybook -p 6006",
     "build:docs": "rollup -c",
@@ -53,10 +57,20 @@
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
     "sirv-cli": "^1.0.11",
-    "svelte": "^3.31.2",
-    "svelte-loader": "^2.13.6"
+    "svelte-loader": "^2.13.6",
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "@tsconfig/svelte": "^3.0.0",
+    "node-sass": "^8.0.0",
+    "sass": "^1.58.3",
+    "svelte": "^3.55.1",
+    "svelte-check": "^2.10.3",
+    "svelte-preprocess": "^5.0.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
   },
   "dependencies": {
     "easy-reactive": "^1.0.2"
   }
 }
+
